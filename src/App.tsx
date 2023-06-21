@@ -1,8 +1,13 @@
+import Navbar from "./components/Navbar";
+import { Outlet } from "react-router-dom";
+import { AuthContextProvider } from "./context/AuthContext";
+
 function App() {
   return (
-    <div className="bg-blue-500 text-white p-4">
-      This is a styled component using Tailwind CSS!
-    </div>
+    <AuthContextProvider>
+      <Navbar />
+      <Outlet />
+    </AuthContextProvider>
   );
 }
 

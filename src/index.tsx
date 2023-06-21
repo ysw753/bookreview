@@ -3,13 +3,22 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./styles.css"; // Tailwind CSS 파일 임포트
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/Home";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [{ index: true, path: "/", element: <Home /> }],
+  },
+]);
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
