@@ -1,8 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { login, onUserStateChanged } from "../api/firebase";
+import { login, logout, onUserStateChanged } from "../api/firebase";
 
 type AuthContextType = {
   login: () => void;
+  logout: () => void;
   user: User | undefined;
 };
 type User = {
@@ -24,7 +25,7 @@ export function AuthContextProvider({
   }, []);
 
   return (
-    <AuthContext.Provider value={{ login, user }}>
+    <AuthContext.Provider value={{ login, logout, user }}>
       {children}
     </AuthContext.Provider>
   );
