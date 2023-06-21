@@ -5,12 +5,19 @@ import reportWebVitals from "./reportWebVitals";
 import "./styles.css"; // Tailwind CSS 파일 임포트
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
+import NewBookReview from "./pages/NewBookReview";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    children: [{ index: true, path: "/", element: <Home /> }],
+    children: [
+      { index: true, path: "/", element: <Home /> },
+      {
+        path: "/write",
+        element: <NewBookReview />,
+      },
+    ],
   },
 ]);
 const root = ReactDOM.createRoot(

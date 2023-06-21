@@ -7,7 +7,9 @@ const Navbar = () => {
   const { user, login, logout } = useAuthContext();
   const navigate = useNavigate();
   const bookReport = () => {
-    navigate("/write");
+    if (user) {
+      navigate("/write");
+    }
   };
   return (
     <header className="flex justify-between border-b border-gray-300 p-2">
