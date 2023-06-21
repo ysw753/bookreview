@@ -7,7 +7,7 @@ type AuthContextType = {
   user: User | undefined;
 };
 type User = {
-  name: string;
+  displayName: string;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);

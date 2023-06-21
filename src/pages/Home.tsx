@@ -1,7 +1,12 @@
 import React from "react";
+import HallOfFame from "../components/HallOfFame";
 
 const Home = () => {
-  return <div>homeasdasd</div>;
+  return (
+    <>
+      <HallOfFame />
+    </>
+  );
 };
 
 export default Home;
