@@ -2,16 +2,20 @@ import React, { useState } from "react";
 import Button from "../components/ui/Button";
 import { uploadImage } from "../api/uploader";
 import { addNewReview } from "../api/firebase";
+import { useAuthContext, User } from "../context/AuthContext";
 
 type ReviewData = {
   title: string;
   contents: string;
+  createdby: string;
 };
 
 const NewBookReview = () => {
+  const { user } = useAuthContext() as { user: User };
   const [reviewData, setReviewData] = useState<ReviewData>({
     title: "",
     contents: "",
+    createdby: user.displayName,
   });
 
   const [file, setFile] = useState<File | null>(null);
@@ -34,11 +38,11 @@ const NewBookReview = () => {
   };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // 검색데이터를 받아와서 사진을 cloudinary에 업로드하고 url을 획득
+    //검색데이터를 받아와서 사진을 cloudinary에 업로드하고 url을 획득
+    //firebase에 새로운 리뷰를 추가
     uploadImage(file).then((url) => {
       addNewReview(reviewData, url);
     });
-    // firebase에 새로운 리뷰를 추가
 
     console.log(reviewData);
   };

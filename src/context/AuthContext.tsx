@@ -1,12 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { login, logout, onUserStateChanged } from "../api/firebase";
 
-type AuthContextType = {
+export type AuthContextType = {
   login: () => void;
   logout: () => void;
   user: User | undefined;
 };
-type User = {
+export type User = {
   displayName: string;
 };
 
