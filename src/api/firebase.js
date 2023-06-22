@@ -1,5 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { v4 as uuid } from "uuid";
+import { getDatabase, set, ref } from "firebase/database";
 
 import {
   getAuth,
@@ -30,5 +32,16 @@ export function logout() {
 export function onUserStateChanged(callback) {
   onAuthStateChanged(auth, async (user) => {
     callback(user);
+  });
+}
+
+const database = getDatabase(app);
+
+export async function addNewReview(reviewData, imageUrl) {
+  const id = uuid();
+  set(ref(database, `reviews/${id}`), {
+    ...reviewData,
+    id,
+    image: imageUrl,
   });
 }

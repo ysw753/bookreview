@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "../components/ui/Button";
 import { uploadImage } from "../api/uploader";
+import { addNewReview } from "../api/firebase";
 
 type ReviewData = {
   title: string;
@@ -33,8 +34,10 @@ const NewBookReview = () => {
   };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    uploadImage(file).then((url) => console.log(url));
     // 검색데이터를 받아와서 사진을 cloudinary에 업로드하고 url을 획득
+    uploadImage(file).then((url) => {
+      addNewReview(reviewData, url);
+    });
     // firebase에 새로운 리뷰를 추가
 
     console.log(reviewData);
