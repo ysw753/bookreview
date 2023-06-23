@@ -6,6 +6,7 @@ import "./styles.css"; // Tailwind CSS 파일 임포트
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import NewBookReview from "./pages/NewBookReview";
+import ReviewDetail from "./pages/ReviewDetail";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: "/write",
         element: <NewBookReview />,
+      },
+      {
+        path: "/review/:id",
+        element: <ReviewDetail />,
       },
     ],
   },

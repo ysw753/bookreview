@@ -10,7 +10,7 @@ const ReviewCard = ({
   return (
     <li
       onClick={() => {
-        navigate(`/products/${id}`, { state: { review } });
+        navigate(`/review/${id}`, { state: { review } });
       }}
       className="rounded-lg shadow-md overflow-hidden cursor-pointer transition-all hover:scale-105"
     >
