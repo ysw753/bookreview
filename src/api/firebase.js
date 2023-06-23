@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { v4 as uuid } from "uuid";
-import { getDatabase, set, ref } from "firebase/database";
+import { getDatabase, get, set, ref } from "firebase/database";
 
 import {
   getAuth,
@@ -39,9 +39,17 @@ const database = getDatabase(app);
 
 export async function addNewReview(reviewData, imageUrl) {
   const id = uuid();
-  set(ref(database, `reviews/${id}`), {
+  return set(ref(database, `reviews/${id}`), {
     ...reviewData,
     id,
     image: imageUrl,
+  });
+}
+export async function getReviews() {
+  return get(ref(database, "reviews")).then((snapshot) => {
+    if (snapshot.exists()) {
+      return Object.values(snapshot.val());
+    }
+    return [];
   });
 }

@@ -4,21 +4,28 @@ import { uploadImage } from "../api/uploader";
 import { addNewReview } from "../api/firebase";
 import { useAuthContext, User } from "../context/AuthContext";
 
-type ReviewData = {
+export type ReviewData = {
+  id: string;
   title: string;
+  image: string;
   contents: string;
   createdby: string;
 };
 
 const NewBookReview = () => {
   const { user } = useAuthContext() as { user: User };
+  console.log(user);
   const [reviewData, setReviewData] = useState<ReviewData>({
+    id: "",
     title: "",
+    image: "",
     contents: "",
-    createdby: user.displayName,
+    createdby: user?.displayName,
   });
 
   const [file, setFile] = useState<File | null>(null);
+
+  const [success, setSuccess] = useState<string | boolean>(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -41,16 +48,22 @@ const NewBookReview = () => {
     //검색데이터를 받아와서 사진을 cloudinary에 업로드하고 url을 획득
     //firebase에 새로운 리뷰를 추가
     uploadImage(file).then((url) => {
-      addNewReview(reviewData, url);
+      addNewReview(reviewData, url).then(() => {
+        setSuccess("업로드 완료!!!");
+        setTimeout(() => {
+          setSuccess(false);
+        }, 3000);
+      });
     });
 
     console.log(reviewData);
   };
-
+  console.log(success);
   return (
     <section className="w-full text-center">
       <h2 className="text-2xl font-bold my-4">독후감 작성 페이지</h2>
 
+      {success && <p className="my-2">{success}</p>}
       {file && (
         <img
           className="w-96 my-auto mb-2"
