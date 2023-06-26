@@ -16,7 +16,6 @@ const ReviewCard = ({
     >
       <div className="flex justify-space items-top p-5">
         <img className="w-1/2  " src={image} alt={title} />
-        <p className="m-5 truncate">책 제목을 입력해주세요</p>
       </div>
       <div className="mt-2 px-2 text-lg flex justify-between items-center">
         <h3 className="truncate">{title}</h3>

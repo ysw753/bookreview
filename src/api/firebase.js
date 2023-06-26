@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { v4 as uuid } from "uuid";
-import { getDatabase, get, set, ref } from "firebase/database";
+import { getDatabase, get, set, ref, update, push } from "firebase/database";
 
 import {
   getAuth,
@@ -43,6 +43,7 @@ export async function addNewReview(reviewData, imageUrl) {
     ...reviewData,
     id,
     image: imageUrl,
+    count: 0,
   });
 }
 export async function getReviews() {
@@ -52,4 +53,10 @@ export async function getReviews() {
     }
     return [];
   });
+}
+export async function updateReviewCount(data, num) {
+  const newcount = data.count + num;
+  const newObj = { ...data, count: newcount };
+
+  return set(ref(database, `reviews/${data.id}`), newObj);
 }

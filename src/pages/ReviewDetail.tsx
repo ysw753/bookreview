@@ -1,27 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-
+import { AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
+import { updateReviewCount } from "../api/firebase";
 const ReviewDetail = () => {
   const {
     state: {
-      review: { id, image, title, contents, createdby },
+      review: { id, image, title, contents, createdby, count },
+      review,
     },
   } = useLocation();
+  const [good, setGood] = useState(false);
+  const clickHandler = () => {
+    setGood((prev) => {
+      return !prev;
+    });
+    let num = good ? -1 : 1;
+    updateReviewCount(review, num);
+  };
   return (
-    <section className="p-10">
-      <div className="flex flex-col md:flex-row justify-center">
+    <section className="p-10 flex flex-col items-center	">
+      <div className="w-1/2 flex flex-col md:flex-row justify-center">
         <img className="w-1/3  " src={image} alt={title} />
-        <div className="w-full basis-5/12 flex flex-col p-4">
-          <p className="text-2xl font-bold py-2 border-b border-gray-400">
-            작성자 : {createdby}
+        <div className="w-full basis-5/12 flex flex-col px-4">
+          <p className="text-xl font-bold py-2 border-b border-gray-400">
+            {title}
           </p>
-          <h2 className="text-3xl font-bold py-2 ">{title}</h2>
+          <div className="flex items-center justify-between">
+            <p className=" text-md font-bold py-2 text-end">
+              작성자 : {createdby}
+            </p>
+            <p
+              className="cursor-pointer transition-all hover:scale-105"
+              onClick={clickHandler}
+            >
+              {good ? (
+                <AiFillHeart color="red" size={20} />
+              ) : (
+                <AiOutlineHeart color="red" size={20} />
+              )}
+            </p>
+          </div>
         </div>
       </div>
-      <p className="p-10 text-xl break-words break-all ">
-        {contents}
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-      </p>
+      <p className="p-10 w-1/2  text-xl break-words break-all ">{contents}</p>
     </section>
   );
 };

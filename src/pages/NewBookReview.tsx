@@ -13,6 +13,7 @@ export type ReviewData = {
   image: string;
   contents: string;
   createdby: string;
+  count: number;
 };
 
 const NewBookReview = () => {
@@ -24,6 +25,7 @@ const NewBookReview = () => {
     image: "",
     contents: "",
     createdby: user?.displayName,
+    count: 0,
   });
   const [findIdx, setFindIdx] = useState([]);
 
