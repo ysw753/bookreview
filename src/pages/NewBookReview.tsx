@@ -75,7 +75,7 @@ const NewBookReview = () => {
         {findIdx?.length > 0 && (
           <ul className="w-full h-80 overflow-scroll overflow-x-hidden z-10">
             {findIdx?.map((data: any) => (
-              <FindCard data={data} clickHandler={clickHandler} />
+              <FindCard key={data.id} data={data} clickHandler={clickHandler} />
             ))}
           </ul>
         )}

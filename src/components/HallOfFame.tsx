@@ -33,7 +33,7 @@ const HallOfFame = () => {
           <ul>
             <h2 className="text-6xl mb-10">명예의 전당</h2>
             {fame.map((review) => (
-              <HallOfFameCard review={review} />
+              <HallOfFameCard key={review.id} review={review} />
             ))}
           </ul>
         </div>
