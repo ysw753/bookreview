@@ -44,7 +44,6 @@ const NewBookReview = () => {
     getBookInfo(query).then((data) => setFindIdx(data.documents));
   };
   const clickHandler = (data: any) => {
-    console.log(data);
     setImage(data.url);
     setFindIdx([]);
   };

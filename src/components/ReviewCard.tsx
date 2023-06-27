@@ -1,10 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { ReviewData } from "../pages/NewBookReview";
 
+type Props = {
+  review: ReviewData;
+};
 const ReviewCard = ({
   review,
   review: { id, image, title, contents, createdby },
-}: any) => {
+}: Props) => {
   const navigate = useNavigate();
 
   return (
