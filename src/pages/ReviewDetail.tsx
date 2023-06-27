@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
@@ -18,6 +18,7 @@ const ReviewDetail = () => {
     let num = good ? -1 : 1;
     updateReviewCount(review, num);
   };
+
   return (
     <section className="p-10 flex flex-col items-center	">
       <div className="w-1/2 flex flex-col md:flex-row justify-center">

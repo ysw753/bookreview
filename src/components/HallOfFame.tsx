@@ -28,8 +28,8 @@ const HallOfFame = () => {
 
   return (
     <section className="flex  justify-center bg-pink-900 p-10 	">
-      <div className="bg-cover bg-banner opacity-80">
-        <div className=" text-center text-gray-50">
+      <div className="bg-cover bg-banner ">
+        <div className=" text-center text-white">
           <ul>
             <h2 className="text-6xl mb-10">명예의 전당</h2>
             {fame.map((review) => (

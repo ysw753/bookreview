@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import NewBookReview from "./pages/NewBookReview";
 import ReviewDetail from "./pages/ReviewDetail";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,11 @@ const router = createBrowserRouter([
       { index: true, path: "/", element: <Home /> },
       {
         path: "/write",
-        element: <NewBookReview />,
+        element: (
+          <ProtectedRoute>
+            <NewBookReview />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/review/:id",
