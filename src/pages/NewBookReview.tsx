@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../components/ui/Button";
 import { uploadImage } from "../api/uploader";
 import { addNewReview } from "../api/firebase";
@@ -44,7 +44,7 @@ const NewBookReview = () => {
     getBookInfo(query).then((data) => setFindIdx(data.documents));
   };
   const clickHandler = (data: any) => {
-    setImage(data.url);
+    setImage(data.thumbnail);
     setFindIdx([]);
   };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -63,6 +63,9 @@ const NewBookReview = () => {
 
     // console.log(reviewData);
   };
+  // useEffect(() => {
+  //   console.log(image);
+  // }, [image]);
   return (
     <section className="w-full">
       <div className="text-center mb-5">
@@ -79,7 +82,6 @@ const NewBookReview = () => {
             ))}
           </ul>
         )}
-
         {success && <p className="my-2">{success}</p>}
         {image && (
           <img
