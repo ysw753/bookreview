@@ -1,7 +1,11 @@
-# BOOKREVIEW
+# 우리들의책장
 독후감을 쓰고 다른사람들과 공유해보아요.
 <br>
 가장 인기 있는 독후감은 맨 상단에 고정됩니다.
+<br><br><br>
+<div align="center">
+  https://bookre-89e0e.web.app/
+</div>
 
 <br> <br> <br>
 <h2>사용 기술</h2>
@@ -24,6 +28,7 @@
   <li>FIREBASE Authentication(구글인증)
 </li>
   <li>FIREBASE  Realtime Database </li>
+  <li>FIREBASE  Hoisting </li>
 </ul>
 
 
