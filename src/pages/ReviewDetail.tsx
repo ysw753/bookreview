@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
@@ -6,7 +6,7 @@ import { updateReviewCount } from "../api/firebase";
 const ReviewDetail = () => {
   const {
     state: {
-      review: { id, image, title, contents, createdby, count },
+      review: { image, title, contents, createdby },
       review,
     },
   } = useLocation();
