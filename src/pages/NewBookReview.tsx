@@ -49,10 +49,18 @@ const NewBookReview = () => {
   };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    let changeContents = reviewData.contents?.replace(
+      /(?:\r\n|\r|\n)/g,
+      "<br/>"
+    );
+    let newContents = { ...reviewData };
+    newContents.contents = changeContents;
+    //리뷰데이터 개행설정
+
     //검색데이터를 받아와서 사진을 cloudinary에 업로드하고 url을 획득
     //firebase에 새로운 리뷰를 추가
     uploadImage(image).then((url) => {
-      addNewReview(reviewData, url).then(() => {
+      addNewReview(newContents, url).then(() => {
         setSuccess("업로드 완료!!!");
         navigate("/");
         setTimeout(() => {

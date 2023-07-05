@@ -9,7 +9,7 @@ const FindCard = ({ data, clickHandler }: any) => {
       className="rounded-lg shadow-md overflow-hidden cursor-pointer transition-all hover:scale-105"
       onClick={onClickHandler}
     >
-      <div className="flex justify-space items-top p-5">
+      <div className="flex justify-spacezz items-top p-5">
         <img
           src={
             data.thumbnail

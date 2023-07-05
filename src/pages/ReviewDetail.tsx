@@ -10,6 +10,7 @@ const ReviewDetail = () => {
       review,
     },
   } = useLocation();
+  console.log(contents);
   const [good, setGood] = useState(false);
   const clickHandler = () => {
     setGood((prev) => {
@@ -44,7 +45,9 @@ const ReviewDetail = () => {
           </div>
         </div>
       </div>
-      <p className="p-10   text-xl break-words break-all ">{contents}</p>
+      <p className="p-10 whitespace-pre-line text-xl break-words break-all ">
+        {contents ? contents.split("<br/>").join("\n") : ""}
+      </p>
     </section>
   );
 };

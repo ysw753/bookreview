@@ -17,7 +17,7 @@ const HallOfFame = () => {
         }
       });
       let kingOfReviews = reviews?.filter((el) => el.count === countOfReviews);
-      kingOfReviews = kingOfReviews ? kingOfReviews : [];
+      kingOfReviews = kingOfReviews ? [kingOfReviews[0]] : [];
       setFame(kingOfReviews);
     }
   }, [isLoading, reviews]);
@@ -27,14 +27,16 @@ const HallOfFame = () => {
   }
 
   return (
-    <section className="flex  justify-center bg-pink-900 p-10 	">
+    <section className="bg-pink-900 p-10 	">
       <div className="bg-cover bg-banner ">
-        <div className=" text-center text-white">
-          <ul>
+        <div className="truncate text-center text-white">
+          <ul className="">
             <h2 className="text-6xl mb-10">명예의 전당</h2>
-            {fame.map((review) => (
-              <HallOfFameCard key={review.id} review={review} />
-            ))}
+            <div>
+              {fame.map((review) => (
+                <HallOfFameCard key={review.id} review={review} />
+              ))}
+            </div>
           </ul>
         </div>
       </div>
