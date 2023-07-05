@@ -28,7 +28,7 @@
   <li>FIREBASE Authentication(구글인증)
 </li>
   <li>FIREBASE  Realtime Database </li>
-  <li>FIREBASE  Hoisting </li>
+  <li>FIREBASE  Hosting </li>
 </ul>
 
 
