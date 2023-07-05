@@ -9,6 +9,7 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signOut,
+  GithubAuthProvider,
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -21,7 +22,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
-const provider = new GoogleAuthProvider();
+const provider = new GithubAuthProvider();
 
 export function login() {
   signInWithPopup(auth, provider).catch(console.error);
