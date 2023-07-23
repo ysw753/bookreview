@@ -25,7 +25,7 @@
 
 <ul>
   <li>카카오 책 검색 API </li>
-  <li>FIREBASE Authentication(구글인증)
+  <li>FIREBASE Authentication(깃허브인증)
 </li>
   <li>FIREBASE  Realtime Database </li>
   <li>FIREBASE  Hosting </li>
